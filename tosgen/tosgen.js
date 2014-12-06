@@ -3,9 +3,12 @@ if (Meteor.isClient) {
   Template.view.helpers({
   	point : function(){
   		var page = Session.get('pg');
+  		Session.set('voiceVerify',false);
+  		Session.set('voiceMode',this.voice);
   		if(!page){
   			page = 1;	
   			Session.set('pg',page);
+  			Session.set('total',this.total);
   		}
   		var point = this.points[page-1];
   		return point;  		
@@ -20,14 +23,28 @@ if (Meteor.isClient) {
   		return Session.get('pg') > 1;
   	},
   	hasNextButton : function(){
+  		if(this.voice == 2){
+  			if(!Session.get('voiceVerify')){
+  				return false;
+  			}
+  		}
   		var page = Session.get('pg');
   		return page != this.total && this.total != 1;
   	},
   	hasFinishButton : function(){
+  		if(this.voice == 2){
+  			if(!Session.get('voiceVerify')){
+  				return false;
+  			}
+  		}
   		return Session.get('pg') == this.total;
-  	}
-  	
-  	
+  	},
+  	isActiveInd : function(ind){
+  		return ind == Session.get('pg')-1 ? 'active' : '';
+  	},
+  	quoteClass : function(){
+  		return Session.get('voiceVerify') ? 'active' : '';
+  	} 	
   });
   
   Template.view.events({
@@ -48,6 +65,33 @@ if (Meteor.isClient) {
   	}
   });
   
+  Template.view.rendered = function(){
+  	var saidI = false;
+  	
+  	if (annyang) {
+	  // Let's define our first command. First the text we expect, and then the function it should call
+	  var commands = {
+	    'I agree': function() {
+	      	Session.set('voiceVerify',true);
+	      	
+	      	var page = Session.get('pg');
+	      	var total = Session.get('total');
+	      	if(page < total && Session.get('voiceMode') != 2){
+  			Session.set('pg',page+1);
+  		}
+	    }	    
+	  };
+
+	  // Add our commands to annyang
+	  annyang.addCommands(commands);
+
+	  // Start listening. You can call this here, or attach this call to an event, button, etc.
+	  annyang.start();
+	}else{
+		Session.set('voiceMode',0);
+	}
+  };
+  
   Template.home.helpers({
   	btnSubmit : function(){
   		if(!Session.get('btnSubmitVal')){
@@ -60,7 +104,7 @@ if (Meteor.isClient) {
   Template.home.events({
   	'click #btnTOS' : function(){
   		Session.set('btnSubmitVal','Viewing TOS');
-  		var win = window.open("http://localhost:3000/generate?n=facebook&callback=callBack","View Agreement","width=500,height=500");  		
+  		var win = window.open("/generate?n=facebook&callback=callBack","View Agreement","width=500,height=500");  		
   	}
   });
   

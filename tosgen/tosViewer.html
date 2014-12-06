@@ -1,6 +1,9 @@
 <head>
+  <meta name="viewport" content="width=device-width, user-scalable=no">
   <title>tosgen</title>
   <script type="text/javascript" href="http://127.0.0.1/front/js/jquery.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/annyang/1.4.0/annyang.min.js"></script>
+  
   <link rel="stylesheet" href="bootstrap.css" />
   
 </head>
@@ -10,36 +13,78 @@
 </body>
 
 <template name="view">
-	<div class="col-xs-12 col-md-8 col-md-offset-2 doc">
-		<h2 align="center">Term and Conditions view of {{ site }}</h2>
+	<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+	      <div class="container">
+		<div class="navbar-header">	
+		 <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+		    <span class="sr-only">Toggle navigation</span>
+		    <span class="icon-bar"></span>
+		    <span class="icon-bar"></span>
+		    <span class="icon-bar"></span>
+		  </button>  
+		  <a class="navbar-brand" href="#" >Awesome TOS of {{ site }}</a>
+		</div>
+		<div id="navbar" class="collapse navbar-collapse">
+	          <ul class="nav navbar-nav pull-right">
+	            {{#each links}}
+		    <li><a href="{{ url }}" target="_blank">{{ name }}</a></li>
+		    {{/each}}		    
+		  </ul>
+		</div>
 		
-		{{#with point}}
+	    	</div>
+	      
+	    </nav>
+	    
+	 <div class="container" style="max-height:300px">
+		<div class="col-xs-12 col-md-8 col-md-offset-2 doc">		
+			{{#with point}}
 		
-		<div class="point">
-			<div class="icon row">
-					<img src="{{ icon }}" width="100px" />
-			</div>
-			<div class="pdata row">
-				<h3 align="center">{{ title }}</h3>
-			</div>
-		</div>		
+			<div class="point">
+				<div class="icon row">
+						<img src="{{ icon }}" width="150px" height="150px" />
+				</div>
+				<div class="pdata row">
+					<h3 align="center">{{ title }}</h3>
+				</div>
+			</div>		
 		
-		{{/with}}
-		
-		<div class="controls pull-right">
-		
-		{{#if hasBackButton}}
-			<input type="button" class="btn btn-primary" value="Back" id="btnBack" />
-		{{/if}}
-		{{#if hasNextButton}}
-			<input type="button" class="btn btn-primary" value="Next" id="btnNext" />
-		{{/if}}
-		{{#if hasFinishButton}}
-			<input type="button" class="btn btn-primary" value="Finish" id="btnFinish" />
-		{{/if}}
-		
+			{{/with}}	
 		
 		</div>
 	</div>
+	
+	<footer class="footer" >
+	     <div class="controls indicator">
+	     	{{#each points}}
+	     		<div class="circle {{ isActiveInd index }}"></div>
+	     	{{/each}}
+	     </div>
+	     
+	     <hr>
+	      <div class="container">
+	      		<div class="controls pull-left col-xs-4" style="text-align:left">
+	      		{{#if hasBackButton}}
+			<input type="button" class="btn btn-success" value="Back" id="btnBack" />
+			{{/if}}
+	      		</div>
+	      		
+	      		<div class="quote pull-left col-xs-4">
+	      			<p class="{{quoteClass}}" id="quote">"I Agree"</p>
+	      		</div>
+			
+			<div class="controls pull-right col-xs-4" style="text-align:right">
+					
+			{{#if hasNextButton}}
+				<input type="button" class="btn btn-success" value="Next" id="btnNext" />
+			{{/if}}
+			{{#if hasFinishButton}}
+				<input type="button" class="btn btn-primary" value="Finish" id="btnFinish" />
+			{{/if}}
+		
+		
+			</div>
+	      </div>
+	</footer>
   
 </template>

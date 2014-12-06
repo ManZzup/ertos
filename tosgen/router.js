@@ -49,20 +49,33 @@ Router.map(function(){
 					var res = JSON.parse(result.content);
 					
 					var doc = {};
-					doc.links = res.links;
+					var links = [];
+					
+					
+					for(var key in res.links){
+						links.push({
+							   	name:res.links[key].name,
+							   	url:res.links[key].url
+							   });
+					}
+					
+					doc.links = links;
 					
 					var points = [];
 					res.points.forEach(function(o,i){
 						points[i] = {};
+						points[i].index = i;
 						points[i].id = res.pointsData[o].id;
 						points[i].title = res.pointsData[o].title;
 						points[i].score = res.pointsData[o].score;
 						points[i].icon = "";
 					});		
 					
+					
 					doc.points = points;
 					doc.total = res.points.length;
 					doc.site = n;
+					doc.voice = params.voiceMode ? params.voiceMode : 1;
 					
 					Session.set('doc',doc);
 					
