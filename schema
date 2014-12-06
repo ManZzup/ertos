@@ -1,0 +1,13 @@
+point:
+	id: 
+	icon:
+
+doc:
+	links:
+		privacy
+		tos
+	points: [point,point]
+	url:
+	title:
+
+

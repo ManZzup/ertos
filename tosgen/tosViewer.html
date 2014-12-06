@@ -1,0 +1,45 @@
+<head>
+  <title>tosgen</title>
+  <script type="text/javascript" href="http://127.0.0.1/front/js/jquery.js"></script>
+  <link rel="stylesheet" href="bootstrap.css" />
+  
+</head>
+
+<body>
+
+</body>
+
+<template name="view">
+	<div class="col-xs-12 col-md-8 col-md-offset-2 doc">
+		<h2 align="center">Term and Conditions view of {{ site }}</h2>
+		
+		{{#with point}}
+		
+		<div class="point">
+			<div class="icon row">
+					<img src="{{ icon }}" width="100px" />
+			</div>
+			<div class="pdata row">
+				<h3 align="center">{{ title }}</h3>
+			</div>
+		</div>		
+		
+		{{/with}}
+		
+		<div class="controls pull-right">
+		
+		{{#if hasBackButton}}
+			<input type="button" class="btn btn-primary" value="Back" id="btnBack" />
+		{{/if}}
+		{{#if hasNextButton}}
+			<input type="button" class="btn btn-primary" value="Next" id="btnNext" />
+		{{/if}}
+		{{#if hasFinishButton}}
+			<input type="button" class="btn btn-primary" value="Finish" id="btnFinish" />
+		{{/if}}
+		
+		
+		</div>
+	</div>
+  
+</template>

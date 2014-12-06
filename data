@@ -1,0 +1,56 @@
+doc
+
+{
+	"links": {
+	    "privacy": {
+	      "name": "Data Use Policy",
+	      "url": "http://www.facebook.com/full_data_use_policy"
+	    },
+	    "terms": {
+	      "name": "Terms of Service",
+	      "url": "http://www.facebook.com/legal/terms"
+	    }
+	  },
+	"points": [
+	    "E58aPtzP3jk",
+	    "VTlWfubfib4",
+	    "kizrN7qb1Ck",
+	    "no-pseudos-allowed",
+	    "s98UR0Jx6Z4"
+	 ],
+	 "url": "facebook.com",
+	 "title": "facebook" 
+}
+
+point
+
+{
+      "id": "E58aPtzP3jk",
+      "title": "This service tracks you on other websites",
+      "icon":"",
+      "score":60
+}
+{
+      "id": "VTlWfubfib4",
+      "title": "You can give comments before changes",
+      "icon":"",
+      "score":10
+}
+{
+      "id": "kizrN7qb1Ck",
+      "title": "Very broad copyright license on your content",
+      "icon":"",
+      "score":80
+}
+{
+      "id": "no-pseudos-allowed",
+      "title": "No pseudonym allowed",
+      "icon":"",
+      "score":60
+}
+{
+      "id": "s98UR0Jx6Z4",
+      "title": "Facebook automatically shares your data with many other services",
+      "icon":"",
+      "score":60
+}
