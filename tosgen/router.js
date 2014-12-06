@@ -35,6 +35,14 @@ Router.map(function(){
 	this.route('getTos',{
 		path: '/generate',
 		action: function(){
+			//dummy icon set
+			var icons = {
+					"HUL_4wIbNGY":true,
+					"PD5ZWzgv2RI":true,
+					"QZgR8faRWDU":true,
+					"yCSzdR_gOW4":true
+				    };
+			
 			var n = this.params.query.n;
 			
 			var params = this.params.query;
@@ -67,8 +75,24 @@ Router.map(function(){
 						points[i].index = i;
 						points[i].id = res.pointsData[o].id;
 						points[i].title = res.pointsData[o].title;
-						points[i].score = res.pointsData[o].score;
-						points[i].icon = "";
+						points[i].score = res.pointsData[o].tosdr.point;
+						
+						if(icons[points[i].id]){
+							points[i].icon = "/img/" + points[i].id + ".png";	
+						}else{
+							points[i].icon = "/img/neut.png";
+												
+							if(points[i].score == 'good'){
+								points[i].icon = "/img/good.png";
+							}else if(points[i].score == 'bad'){
+								points[i].icon = "/img/bad.png";
+							}else if(points[i].score == 'neutral'){
+								points[i].icon = "/img/info.png";
+							}						
+						}
+						
+						
+						
 					});		
 					
 					
