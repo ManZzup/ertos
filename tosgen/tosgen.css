@@ -88,3 +88,8 @@ body > .container {
 .demo p{
 	margin:20px;
 }
+
+.jumbotron .container img{
+	padding-top:10px;
+	margin-left:30px;
+}

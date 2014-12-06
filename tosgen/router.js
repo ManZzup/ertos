@@ -47,7 +47,10 @@ Router.map(function(){
 			
 			var params = this.params.query;
 			
-			Meteor.http.get("https://tosdr.org/api/1/service/" + n + ".json", function (error, result) {
+			//Meteor.http.get("https://tosdr.org/api/1/service/" + n + ".json", function (error, result) {
+			Meteor.http.get("https://manzzup-tosdr-v1.p.mashape.com/service/" + n + ".json", 
+					{headers:{"X-Mashape-Key" : "38XcAhvKebmshQlBO9wxQOFkY0dip1qrP1qjsn6457Guazgjey"}}, 
+			function (error, result) {
 				if(error) {
 				    console.log('http get FAILED!');
 				} else {
