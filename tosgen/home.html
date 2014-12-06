@@ -30,17 +30,183 @@
     <div class="jumbotron">
       <div class="container">
         <h1>Welcome to Awesome TOS</h1>
-        <p>We simply make the TOS and similar boring documents readable to humans. Below is a some samples to start with.</p>
-        <p><a class="btn btn-primary btn-lg" href="#" role="button">Learn more &raquo;</a></p>
+        <p>We simply make the TOS and similar boring documents readable to humans. 
+           ATOS can be used as a widget to any website to display their TOS/Privacy Policy/Other legal documents
+           to the end user and make sure the user read them.
+           Only dependency is that the required site have to be added to <a href="https://tosdr.org/" target="_blank">tosdr</a> where
+           we obtain the terms in shortened form.
+           Please follow the Demos to understand how it works.
+           
+        </p>
+        <p>
+        	
+        </p>
       </div>
     </div>
 
-    <div class="container">
-    
-    	<div class="demo1">
-    		<h3>Here's a list of sample demos to start with</h3>
+    <div class="container" style="margin-top:-80px;">
+    	
+    	<div class="para">
+    		<h2>How we make the regular TOS an ATOS?</h2>
+    		<div class="row">
+    			<div class="col-xs-12 col-md-4" style="text-align:center">
+    				<img src="https://tosdr.org/img/tosdr-icon-64.png" />
+    				<h4>1 : Taking the gist of each term</h4>
+    				<p align="justify">First we strip down the loong boring TOS into small fragmented points. 
+    				   In our case study, we found that the organization <a href="https://tosdr.org/" target="_blank">tosdr</a>
+    				   has already done that. Better more, it also has a public API :) So we get the required terms of each site from
+    				   their API.
+    				</p>
+    			</div>
+    			
+    			<div class="col-xs-12 col-md-4" style="text-align:center">
+    				<img src="/img/good.png" width="64px" />
+    				<h4>2 : Mixing interactive media</h4>
+    				<p align="justify">
+    				But the terms itself are still boring, so we add a little twist to make it more interesting.
+    				We add custom designed icons to descrive each term. Please note that an initiative called 
+    				<a href="https://wiki.mozilla.org/Privacy_Icons" target="_blank">Mozilla Privacy Icons</a>
+    				is already working on this. But since it's still in alpha state, we produced very few our own
+    				icons. (Only 4 for now and another 4 in general). But still those add much color to the terms.
+    				</p>
+    			</div>
+    			
+    			<div class="col-xs-12 col-md-4" style="text-align:center">
+    				<img src="/img/voice.png" height="64px" />
+    				<h4>3 : Adding voice based confirmation</h4>
+    				<p align="justify">
+    				All aboard, we still had one little issue. How can we make sure that the user is certainly
+    				gonna read what's there? We can only force the user to go through the terms, not read them.
+    				WAIT! we actually can make the user read them ;) We went a step ahead and add speech recognition
+    				to see whether the user specifically say "I Agree" on each term. While this is working approach,
+    				due to the amount of things that can go wrong in a voice based approach we have limited this as
+    				only an added feature that is not mandatory unless specified by the caller.
+    				</p>
+    			</div>
+    		</div>
+    	</div>
+    	
+    	<hr>
+    	
+    	<div class="demo">
+    		<h2>See Google's TOS as an ATOS !</h2>
+    		<div class="row">
+    			<div class="col-xs-12 col-md-4">
+    				<img src="/img/google-demo-1.png" width="100%" class="doc-img" align="middle" />
+    			</div>
+    			<div class="col-xs-12 col-md-8">
+    				<p>Voice confirmation is NOT compulsory in this demo. Simply click the 'Next' button to
+ 				   navigate through the terms.   		
+ 				   <br><br>
+ 				   <b>NOTE</b> <br> Stil the Voice-recognition feature is active. If you Allow it to access the microphone input, you can
+ 				   simply say "I Agree" to your mic to goto the next term. You dont have to click the button.		
+    				</p>
+    			</div>
+    		</div>
+    		<div class="row">
+    			<div class="col-xs-12 col-md-4">
+    				<img src="/img/google-demo-2.png" width="100%" class="doc-img" />
+    			</div>
+    			<div class="col-xs-12 col-md-8">
+    				<p>You can also view the original Term of Service, Privacy Policy and related documents from the dropdown above.			
+    				</p>
+    				<p>
+    					<a href="javascript:window.open('generate?n=google&callback=callBack2&voiceMode=1','View Agreement','width=500,height=500')">Enough blaa show me the Google ATOS demo now!</a>
+    				</p>
+    			</div>
+    		</div>
+    		
+    		<h2>See Google's ATOS with Voice Recognition</h2>
+    		<div class="row">
+    			<div class="col-xs-12 col-md-4">
+    				<img src="/img/google-demo-3.png" width="100%" class="doc-img" align="middle" />
+    			</div>
+    			<div class="col-xs-12 col-md-4">
+    				<p align="justify">
+    				<b>
+    			            Now the Voice recognition is made COMPULSORY. So the user won't see the 'Next' button
+    			            unless he speaks the words "I Agree" to the mic in a convincing way. This is really
+    			            a good way if the target audiece is a mobile users since the acuracy when tested in mobile
+    			            devices was very high compared to the desktops.
+    			            <br>
+    			            When the phrase is said, the text becomes blue and the button Next appears
+    				</b>	
+    				</p>
+    				<p>
+    					<a href="javascript:window.open('generate?n=google&callback=callBack2&voiceMode=2','View Agreement','width=500,height=500')">Check the demo</a>
+    				</p>
+    			</div>
+    			<div class="col-xs-12 col-md-4">
+    				<img src="/img/google-demo-1.png" width="100%" class="doc-img" align="middle" />
+    			</div>
+    		</div>
+    		
+    	</div>
+    	
+    	<div class="demo2" id="demo2">
+    	    <h2>Intergrating ATOS with a custom registration form</h2>	
+    	    
+    	    <p>
+    	    	ATOS is simply a widget. So any website can use it to display their agreement in human form :) But there's one little
+    	    	requirement. That's you have to add that agreement to <a href="https://tosdr.org/" target="_blank">tosdr</a> first.
+    	    	(Check <a href="#">Why We dont maintain our own terms database</a> for more info).
+    	    	<br><br>
+    	    	Once that's done, you can simply call the widget by the following javascript code
+    	    	<br>
+    	    	<div class="code col-xs-12">
+    	    		var win = window.open("http://manzzup.koding.io:3000/generate?n=facebook&callback=callBack&voiceMode=1","View Agreement","width=500,height=500"); 
+    	    	</div>
+    	    	
+    	    	<h4>Parameters</h4>
+    	    	<p>
+    	    		You can specify 3 parameters
+    	    		<ul>
+    	    		
+    	    		<li>
+    	    		<b> n </b> : This the name tag give from <a href="https://tosdr.org/" target="_blank">tosdr</a> when your agreement
+    	    			     info is added to their database. We use this tag to access their API to get the relevant terms.
+    	    		<br>
+    	    		</li>
+    	    		<li>
+    	    		<b> callback </b> : This takes the local javascript function that should be called when the user is 
+    	    				   finished reading the agreement. It's a callback function.
+    	    		<br>
+    	    		</li>
+    	    		
+    	    		<li>
+    	    		<b> voiceMode </b> : This takes the level of voice integration to be used
+    	    				    <br> 1 - use voice as opt-in feature, 'Next' button is available reagardless
+    	    				    <br> 2 - use voice as compulsory feature, 'Next' button is only visible after voice
+    	    				    	     verification is done
+    	    		</li>
+    	    		
+    	    		</ul>
+    	    	</p>
+    	    </p>
+    	    
+    	    	<h4>View it in action!</h4>
+    	    	
+		<form role="form">
+		  <div class="form-group">
+		    <label for="exampleInputEmail1">Email address</label>
+		    <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Enter email" value="hackathon@koding.com">
+		  </div>
+		  <div class="form-group">
+		    <label for="exampleInputPassword1">Password</label>
+		    <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password" value="kodingisawesome">
+		  </div>
+		  
+		  <button type="button" class="btn btn-default" id="btnTOS">View TOS</button>
+		</form>     
+	
+	    </div>
+	
+	    <hr>
+	        
+	    <div class="demo1" id="demo1">
+    		<h2>Sample set of TOSes in ATOS form</h2>
     		<ul>
-    			<li><a href="javascript:window.open('generate?n=facebook&callback=callBack2&voiceMode=2','View Agreement','width=500,height=500')">facebook</a></li>
+    			<li><a href="javascript:window.open('generate?n=facebook&callback=callBack2&voiceMode=2','View Agreement','width=500,height=500')">facebook (Voice only)</a></li>
     			
     			<li><a href="javascript:window.open('generate?n=google&callback=callBack2&voiceMode=1','View Agreement','width=500,height=500')">google</a></li>
     			
@@ -64,25 +230,66 @@
     		</ul>
     		
     	</div>
-	
-	
-    <div class="demo2">	
-	    <h3>Check this registration form intergrated with Awesome TOS</h3>
-		<form role="form">
-		  <div class="form-group">
-		    <label for="exampleInputEmail1">Email address</label>
-		    <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Enter email">
-		  </div>
-		  <div class="form-group">
-		    <label for="exampleInputPassword1">Password</label>
-		    <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
-		  </div>
-		  
-		  <button type="submit" class="btn btn-default" id="btnTOS">{{ btnSubmit }}</button>
-		</form>     
-	
-	    </div>
+    	
+    	<hr>
+    	
+    	<div class="faq">
+    		<h2>FAQ and stuff</h2>
+    		
+    		<ul>
+    			<li>
+    				<h3>Where do we get the prettified terms?</h3>
+    				<p>We get it from <a href="https://tosdr.org/" target="_blank">tosdr</a>. tosdr is an open source project
+    				and all data are licensed under the GNU Affero General Public License
+    				(<a href="http://www.gnu.org/licenses/agpl-3.0-standalone.html">AGPL-3.0</a>).
+    				</p>
+    			</li>
+    			<li>
+    				<h3>Why dont we have our own pretty terms database?</h3>
+    				<p>Simply because we dont want to reinvent the wheel. Above movement is already started
+    				by a good community and has a rapid development. We would like to support it and base on it
+    				rather than trying to be in competition with it.
+    				</p>
+    			</li>
+    			<li>
+    				<h3>Where do we get the nice icons?</h3>
+    				<p>We made most of the icons with much effort (really it was so damn hard :|).
+    				But we also rob the ideas from the 
+    				<a href="https://wiki.mozilla.org/Privacy_Icons" target="_blank">Mozilla Privacy Icons</a> which
+    				again is an Open Source initiative that we have high hopes for to being out a reliable and standardized 
+    				set of privacy icons.
+    				</p>
+    			</li>
+    			<li>
+    				<h3>Can't I show the ATOS widget without adding the terms to tosdr site?</h3>
+    				<p>You CAN! The ATOS viewer widget is made to work completly seperate from it datasource. But it should be 
+    				supplied with the correct format of data. This feature would be implemented in near future. Or if time permitted
+    				within the scope of the hackathon itself :D
+    				</p>
+    			</li>
+    			<li>
+    				<h3>Where from here?</h3>
+    				<p>
+    				We belive that a few addition from here would actually lead this project to a worthy cause.
+    				<ol>
+    					<li>Standardizing the tosdr database and making it mandatory for websites to submit their legal 
+    					documents to it</li>
+    					<li>Releasing a standard set of Privacy Icons correspoding to most common terms/points in use</li>
+    					<li>Incorporating the 'icon' feature to the 'points' schema of tosdr so that their API would be 
+    					providing a rich and complete feature set</li>
+    				</ol>
+    				</p>
+    			</li>
+    		</ul>
+    	</div>
+    	
+    	
     </div>
+    
+    	
+	
+    
+    
     
     <hr>
     <div class="footer">

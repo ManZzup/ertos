@@ -100,6 +100,7 @@ Router.map(function(){
 					doc.total = res.points.length;
 					doc.site = n;
 					doc.voice = params.voiceMode ? params.voiceMode : 1;
+					doc.callback = params.callback;
 					
 					Session.set('doc',doc);
 					

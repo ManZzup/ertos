@@ -1,5 +1,6 @@
 callBack = function(){
-  	return Session.set('btnSubmitVal','Submit');
+	$('#btnTOS').text('Submit');
+	$('#btnTOS').addClass('btn-success');
 }
 
 

@@ -58,7 +58,8 @@ if (Meteor.isClient) {
   	},
   	'click #btnFinish' : function(){
   		var callBackFunction = this.callback;
-  		if(callBackFunction){
+  	
+  		if(callBackFunction && window['opener'][callBackFunction]){
   			window['opener'][callBackFunction]();
   		}
   		window.close();
@@ -103,9 +104,22 @@ if (Meteor.isClient) {
   
   Template.home.events({
   	'click #btnTOS' : function(){
-  		Session.set('btnSubmitVal','Viewing TOS');
+  		$('#btnTOS').text('Viewing TOS');
+  		$('#btnTOS').attr('class','btn');
   		var win = window.open("/generate?n=facebook&callback=callBack","View Agreement","width=500,height=500");  		
-  	}
+  	},
+  	'click #btnDemo1' : function(){
+  	      e.preventDefault();
+	      $('html, body').animate({
+		  scrollTop: $("#demo1").offset().top
+	      }, 600);
+  	},
+  	'click #btnDemo2' : function(e){
+  	      e.preventDefault();
+	      $('html, body').animate({
+		  scrollTop: $("#demo2").offset().top
+	      }, 600);
+  	},
   });
   
 
