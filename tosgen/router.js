@@ -115,4 +115,42 @@ Router.map(function(){
 			
 		}
 	});
+	this.route('parser',{
+		path : '/parser',
+		action: function(){
+			//running a parser to fetch all the service and json data
+			Meteor.http.get("https://tosdr.org/index/services.json", function (error, result) {
+				if(error) {
+				    console.log('http get FAILED!');
+				} else {
+				    var servs = JSON.parse(result.content);
+				    for(var key in servs){
+				    	var serv = servs[key];
+				    	
+				    	//process the points
+				    	var pnts = serv.points;
+				    	for(var i=0;i<pnts.length;i++){
+				    		var pnt = serv.points[i];
+				    		
+					    		//fetch the point
+					    		Meteor.http.get("https://tosdr.org/points/" + pnt + ".json", function (error, result2) {
+					    			if(!error){
+					    				var pntData = JSON.parse(result2.content);
+					    				console.log("Adding " + pnt);
+					    				Points.insertPoint({key:pnt,point:pntData});
+					    			}
+					    		});
+
+				    	}
+				    		
+				    		serv.site = key;
+				    		Services.insertService({name:key,service:serv});
+				    		console.log("Adding " + key);
+
+				    }
+				    
+				}
+			});
+		}
+	});
 });

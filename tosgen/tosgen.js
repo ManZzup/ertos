@@ -73,6 +73,7 @@ if (Meteor.isClient) {
 	  // Let's define our first command. First the text we expect, and then the function it should call
 	  var commands = {
 	    'I agree': function() {
+	    	alert('test');
 	      	Session.set('voiceVerify',true);
 	      	
 	      	var page = Session.get('pg');
